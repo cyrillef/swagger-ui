@@ -146,6 +146,7 @@ paths:
         Returns data on a specific `hub_id`.
       responses:
         '200': { $ref: '#/responses/hub' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -170,6 +171,7 @@ paths:
         - $ref: '#/parameters/query_filter_extensionType'
       responses:
         '200': { $ref: '#/responses/projects' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -190,6 +192,7 @@ paths:
         Returns a project for a given `project_id`.
       responses:
         '200': { $ref: '#/responses/project' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -210,6 +213,7 @@ paths:
         Returns the hub for a given `project_id`.
       responses:
         '200': { $ref: '#/responses/hub' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -246,6 +250,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/folder' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -269,6 +274,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/folder' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -299,6 +305,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/contents' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -331,6 +338,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/entities' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -367,6 +375,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/refs' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -384,6 +393,7 @@ paths:
       responses:
         '204': { $ref: '#/responses/ref_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -408,6 +418,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/item' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -429,6 +440,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/folder' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -461,6 +473,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/entities' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -497,6 +510,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/refs' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -514,6 +528,7 @@ paths:
       responses:
         '204': { $ref: '#/responses/ref_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -537,6 +552,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/version' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -566,6 +582,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/versions' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -587,6 +604,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/version' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -608,6 +626,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/item' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -640,6 +659,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/entities' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -676,6 +696,7 @@ paths:
       responses:
         '200': { $ref: '#/responses/refs' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -693,6 +714,7 @@ paths:
       responses:
         '204': { $ref: '#/responses/ref_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -715,6 +737,7 @@ paths:
       responses:
         '201': { $ref: '#/responses/storage_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
       security:
@@ -737,6 +760,7 @@ paths:
       responses:
         '201': { $ref: '#/responses/item_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
         '409': { $ref: '#/responses/conflict' }
@@ -775,6 +799,7 @@ paths:
       responses:
         '201': { $ref: '#/responses/version_created' }
         '400': { $ref: '#/responses/bad_input' }
+        '401': { $ref: '#/responses/unauthorized' }
         '403': { $ref: '#/responses/forbidden' }
         '404': { $ref: '#/responses/not_found' }
         '409': { $ref: '#/responses/conflict' }
@@ -2602,6 +2627,8 @@ responses:
           ]
         }
 
+  unauthorized:
+    description: Token is not provided in the request.
   forbidden:
     description: Forbidden response
     schema:
