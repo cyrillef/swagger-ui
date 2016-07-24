@@ -5,7 +5,12 @@
         <a href="#">Learn how to use</a>
     </p>
     <p><strong> {{appName}} </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p>
+    {{#if authorizationUrl}}
     <p>Authorization URL: {{authorizationUrl}}</p>
+    {{/if}}
+    {{#if tokenUrl}}
+        <p>Token URL: {{tokenUrl}}</p>
+    {{/if}}
     <p>flow: {{flow}}</p>
     <ul class="api-popup-scopes">
         {{#each scopes}}
@@ -20,4 +25,19 @@
             </li>
         {{/each}}
     </ul>
+
+    {{#if isLogout}}
+    {{else}}
+    <div class="auth_label">
+        <span class="oauth2_auth__label" data-sw-translate>Client ID:</span>
+        <input required placeholder="Your Client ID" class="oauth2_auth__client_id auth_input oauth2_auth__field"
+               name="client_id" type="text" />
+    </div>
+    <div class="auth_label">
+        <span class="oauth2_auth__label" data-sw-translate>Client Secret:</span>
+        <input required placeholder="Your Client Secret" class="oauth2_auth__client_secret auth_input oauth2_auth__field"
+               name="client_secret" type="password" /></label>
+    </div>
+    {{/if}}
+
 </div>

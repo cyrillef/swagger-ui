@@ -98,12 +98,16 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
         var redirectUrl = window.oAuthRedirectUrl || defaultRedirectUrl;
         var url = null;
         var scopes = _.map(auth.get('scopes'), function (scope) {
-            return scope.scope;
-        });
+            return scope.checked ? scope.scope : undefined ;
+        }).filter (function (item) { return item !== undefined ; }) ;
         var state, dets, ep;
         window.OAuthSchemeKey = auth.get('title');
 
         window.enabledScopes = scopes;
+
+        var client_id =this.authsCollectionView.collection.models [0].attributes.client_id || clientId ;
+        var client_secret =this.authsCollectionView.collection.models [0].attributes.client_secret || clientSecret ;
+
         var flow = auth.get('flow');
 
         if(auth.get('type') === 'oauth2' && flow && (flow === 'implicit' || flow === 'accessCode')) {
@@ -111,6 +115,8 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             url = dets.authorizationUrl + '?response_type=' + (flow === 'implicit' ? 'token' : 'code');
             window.swaggerUi.tokenName = dets.tokenName || 'access_token';
             window.swaggerUi.tokenUrl = (flow === 'accessCode' ? dets.tokenUrl : null);
+            window.swaggerUi.client_id =client_id ;
+            window.swaggerUi.client_secret =client_secret ;
             state = window.OAuthSchemeKey;
         }
         else if(auth.get('type') === 'oauth2' && flow && (flow === 'application')) {
@@ -138,13 +144,13 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             }
         }
 
-        redirect_uri = redirectUrl;
+        var redirect_uri = redirectUrl;
 
-        url += '&redirect_uri=' + encodeURIComponent(redirectUrl);
-        url += '&realm=' + encodeURIComponent(realm);
-        url += '&client_id=' + encodeURIComponent(clientId);
-        url += '&scope=' + encodeURIComponent(scopes.join(scopeSeparator));
-        url += '&state=' + encodeURIComponent(state);
+        url += redirect_uri ? '&redirect_uri=' + encodeURIComponent(redirectUrl) : '' ;
+        url += realm ? '&realm=' + encodeURIComponent(realm) : '' ;
+        url +='&client_id=' + encodeURIComponent (client_id) ;
+        url += scopes ? '&scope=' + encodeURIComponent(scopes.join(scopeSeparator)) : '' ;
+        url += state ? '&state=' + encodeURIComponent(state) : '' ;
         for (var key in additionalQueryStringParams) {
             url += '&' + key + '=' + encodeURIComponent(additionalQueryStringParams[key]);
         }
@@ -154,10 +160,12 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
 
     // taken from lib/swagger-oauth.js
     clientCredentialsFlow: function (scopes, tokenUrl, OAuthSchemeKey) {
+        var client_id =this.authsCollectionView.collection.models [0].attributes.client_id || clientId ;
+        var client_secret =this.authsCollectionView.collection.models [0].attributes.client_secret || clientSecret ;
         var params = {
-            'client_id': clientId,
-            'client_secret': clientSecret,
-            'scope': scopes.join(' '),
+            'client_id': client_id,
+            'client_secret': client_secret,
+            'scope': scopes.join(scopeSeparator),
             'grant_type': 'client_credentials'
         };
         $.ajax({

@@ -2555,6 +2555,16 @@ this["Handlebars"]["templates"]["main"] = Handlebars.template({"1":function(dept
   return buffer + "    </h4>\n    </div>\n</div>\n";
 },"useData":true});
 this["Handlebars"]["templates"]["oauth2"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "    <p>Authorization URL: "
+    + escapeExpression(((helper = (helper = helpers.authorizationUrl || (depth0 != null ? depth0.authorizationUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"authorizationUrl","hash":{},"data":data}) : helper)))
+    + "</p>\n";
+},"3":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "        <p>Token URL: "
+    + escapeExpression(((helper = (helper = helpers.tokenUrl || (depth0 != null ? depth0.tokenUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"tokenUrl","hash":{},"data":data}) : helper)))
+    + "</p>\n";
+},"5":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "            <li>\n                <input class=\"oauth-scope\" type=\"checkbox\" data-scope=\""
     + escapeExpression(((helper = (helper = helpers.scope || (depth0 != null ? depth0.scope : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"scope","hash":{},"data":data}) : helper)))
     + "\" oauthtype=\""
@@ -2564,27 +2574,37 @@ this["Handlebars"]["templates"]["oauth2"] = Handlebars.template({"1":function(de
     + "</label><br/>\n                <span class=\"api-scope-desc\">"
     + escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"description","hash":{},"data":data}) : helper)))
     + "\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.OAuthSchemeKey : depth0), {"name":"if","hash":{},"fn":this.program(2, data),"inverse":this.noop,"data":data});
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.OAuthSchemeKey : depth0), {"name":"if","hash":{},"fn":this.program(6, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer + "                </span>\n            </li>\n";
-},"2":function(depth0,helpers,partials,data) {
+},"6":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "                        ("
     + escapeExpression(((helper = (helper = helpers.OAuthSchemeKey || (depth0 != null ? depth0.OAuthSchemeKey : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"OAuthSchemeKey","hash":{},"data":data}) : helper)))
     + ")\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+},"8":function(depth0,helpers,partials,data) {
+  return "";
+},"10":function(depth0,helpers,partials,data) {
+  return "    <div class=\"auth_label\">\n        <span class=\"oauth2_auth__label\" data-sw-translate>Client ID:</span>\n        <input required placeholder=\"Your Client ID\" class=\"oauth2_auth__client_id auth_input oauth2_auth__field\"\n               name=\"client_id\" type=\"text\" />\n    </div>\n    <div class=\"auth_label\">\n        <span class=\"oauth2_auth__label\" data-sw-translate>Client Secret:</span>\n        <input required placeholder=\"Your Client Secret\" class=\"oauth2_auth__client_secret auth_input oauth2_auth__field\"\n               name=\"client_secret\" type=\"password\" /></label>\n    </div>\n";
+  },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div>\n    <h3 class=\"auth__title\">Select OAuth2.0 Scopes</h3>\n    <p>"
     + escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"description","hash":{},"data":data}) : helper)))
     + "</p>\n    <p>Scopes are used to grant an application different levels of access to data on behalf of the end user. Each API may declare one or more scopes.\n        <a href=\"#\">Learn how to use</a>\n    </p>\n    <p><strong> "
     + escapeExpression(((helper = (helper = helpers.appName || (depth0 != null ? depth0.appName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"appName","hash":{},"data":data}) : helper)))
-    + " </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p>\n    <p>Authorization URL: "
-    + escapeExpression(((helper = (helper = helpers.authorizationUrl || (depth0 != null ? depth0.authorizationUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"authorizationUrl","hash":{},"data":data}) : helper)))
-    + "</p>\n    <p>flow: "
+    + " </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p>\n";
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.authorizationUrl : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.tokenUrl : depth0), {"name":"if","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  buffer += "    <p>flow: "
     + escapeExpression(((helper = (helper = helpers.flow || (depth0 != null ? depth0.flow : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"flow","hash":{},"data":data}) : helper)))
     + "</p>\n    <ul class=\"api-popup-scopes\">\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.scopes : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.scopes : depth0), {"name":"each","hash":{},"fn":this.program(5, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "    </ul>\n</div>";
+  buffer += "    </ul>\n\n";
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.isLogout : depth0), {"name":"if","hash":{},"fn":this.program(8, data),"inverse":this.program(10, data),"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "\n</div>";
 },"useData":true});
 this["Handlebars"]["templates"]["operation"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return "deprecated";
@@ -22021,12 +22041,16 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
         var redirectUrl = window.oAuthRedirectUrl || defaultRedirectUrl;
         var url = null;
         var scopes = _.map(auth.get('scopes'), function (scope) {
-            return scope.scope;
-        });
+            return scope.checked ? scope.scope : undefined ;
+        }).filter (function (item) { return item !== undefined ; }) ;
         var state, dets, ep;
         window.OAuthSchemeKey = auth.get('title');
 
         window.enabledScopes = scopes;
+
+        var client_id =this.authsCollectionView.collection.models [0].attributes.client_id || clientId ;
+        var client_secret =this.authsCollectionView.collection.models [0].attributes.client_secret || clientSecret ;
+
         var flow = auth.get('flow');
 
         if(auth.get('type') === 'oauth2' && flow && (flow === 'implicit' || flow === 'accessCode')) {
@@ -22034,6 +22058,8 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             url = dets.authorizationUrl + '?response_type=' + (flow === 'implicit' ? 'token' : 'code');
             window.swaggerUi.tokenName = dets.tokenName || 'access_token';
             window.swaggerUi.tokenUrl = (flow === 'accessCode' ? dets.tokenUrl : null);
+            window.swaggerUi.client_id =client_id ;
+            window.swaggerUi.client_secret =client_secret ;
             state = window.OAuthSchemeKey;
         }
         else if(auth.get('type') === 'oauth2' && flow && (flow === 'application')) {
@@ -22061,13 +22087,13 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             }
         }
 
-        redirect_uri = redirectUrl;
+        var redirect_uri = redirectUrl;
 
-        url += '&redirect_uri=' + encodeURIComponent(redirectUrl);
-        url += '&realm=' + encodeURIComponent(realm);
-        url += '&client_id=' + encodeURIComponent(clientId);
-        url += '&scope=' + encodeURIComponent(scopes.join(scopeSeparator));
-        url += '&state=' + encodeURIComponent(state);
+        url += redirect_uri ? '&redirect_uri=' + encodeURIComponent(redirectUrl) : '' ;
+        url += realm ? '&realm=' + encodeURIComponent(realm) : '' ;
+        url +='&client_id=' + encodeURIComponent (client_id) ;
+        url += scopes ? '&scope=' + encodeURIComponent(scopes.join(scopeSeparator)) : '' ;
+        url += state ? '&state=' + encodeURIComponent(state) : '' ;
         for (var key in additionalQueryStringParams) {
             url += '&' + key + '=' + encodeURIComponent(additionalQueryStringParams[key]);
         }
@@ -22077,10 +22103,12 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
 
     // taken from lib/swagger-oauth.js
     clientCredentialsFlow: function (scopes, tokenUrl, OAuthSchemeKey) {
+        var client_id =this.authsCollectionView.collection.models [0].attributes.client_id || clientId ;
+        var client_secret =this.authsCollectionView.collection.models [0].attributes.client_secret || clientSecret ;
         var params = {
-            'client_id': clientId,
-            'client_secret': clientSecret,
-            'scope': scopes.join(' '),
+            'client_id': client_id,
+            'client_secret': client_secret,
+            'scope': scopes.join(scopeSeparator),
             'grant_type': 'client_credentials'
         };
         $.ajax({
@@ -22387,6 +22415,8 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
 
 SwaggerUi.Models.Oauth2Model = Backbone.Model.extend({
     defaults: {
+        client_id: '',
+        client_secret: '',
         scopes: {}
     },
 
@@ -22420,6 +22450,9 @@ SwaggerUi.Models.Oauth2Model = Backbone.Model.extend({
           valid = true;
       }
 
+        var valid2 =!!this.get ('client_id') && !!this.get ('client_secret') ;
+        valid =valid && valid2 ;
+
       this.set('valid', valid);
 
       return valid;
@@ -22430,7 +22463,14 @@ SwaggerUi.Models.Oauth2Model = Backbone.Model.extend({
 
 SwaggerUi.Views.Oauth2View = Backbone.View.extend({
     events: {
-        'change .oauth-scope': 'scopeChange'
+        'change .oauth-scope': 'scopeChange',
+        'change .oauth2_auth__client_id': 'clientIdChange',
+        'change .oauth2_auth__client_secret': 'clientSecretChange'
+    },
+
+    selectors: {
+        oauth2ClientID: '.oauth2_auth__client_id',
+        oauth2ClientSecret: '.oauth2_auth__client_secret'
     },
 
     template: Handlebars.templates.oauth2,
@@ -22446,7 +22486,35 @@ SwaggerUi.Views.Oauth2View = Backbone.View.extend({
         var scope = $(e.target).data('scope');
 
         this.model.setScopes(scope, val);
+    },
+
+    clientIdChange: function (e) {
+        var val =$(e.target).val () ;
+        if ( val ) {
+            this.$(this.selectors.oauth2ClientID).removeClass ('error') ;
     }
+        this.model.set ('client_id', val) ;
+    },
+
+    clientSecretChange: function (e) {
+        var val =$(e.target).val () ;
+        if ( val ) {
+            this.$(this.selectors.oauth2ClientSecret).removeClass ('error') ;
+        }
+        this.model.set ('client_secret', val) ;
+    },
+
+    isValid: function () {
+        return (this.model.validate ()) ;
+    },
+
+    highlightInvalid: function () {
+        if ( !this.isValid () ) {
+            this.$(this.selectors.oauth2ClientID).addClass ('error') ;
+            this.$(this.selectors.oauth2ClientSecret).addClass ('error') ;
+        }
+    }
+
 });
 'use strict';
 

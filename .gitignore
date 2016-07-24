@@ -3,6 +3,7 @@
 *.iml
 *.iws
 *.flags.json
+*.bak
 npm-debug.log
 web/
 lib/*.zip

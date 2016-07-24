@@ -2,6 +2,8 @@
 
 SwaggerUi.Models.Oauth2Model = Backbone.Model.extend({
     defaults: {
+        client_id: '',
+        client_secret: '',
         scopes: {}
     },
 
@@ -34,6 +36,9 @@ SwaggerUi.Models.Oauth2Model = Backbone.Model.extend({
       if(scp.length === 0) {
           valid = true;
       }
+
+        var valid2 =!!this.get ('client_id') && !!this.get ('client_secret') ;
+        valid =valid && valid2 ;
 
       this.set('valid', valid);
 

@@ -1271,6 +1271,17 @@
   display: inline-block;
   width: 60px;
 }
+.swagger-section .auth_container .oauth2_auth__field {
+  width: 350px;
+}
+.swagger-section .auth_container .oauth2_auth__value {
+  width: 350px;
+}
+.swagger-section .auth_container .oauth2_auth__label {
+  display: inline-block;
+  width: 80px;
+  margin-left: 5px;
+}
 .swagger-section .api-popup-dialog {
   position: absolute;
   display: none;

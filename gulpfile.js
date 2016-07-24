@@ -120,6 +120,12 @@ function _copy() {
     .src(['./src/main/html/**/*'])
     .pipe(gulp.dest('./dist'))
     .on('error', log);
+
+    // copy forge files
+    gulp
+        .src(['./forge/*'])
+        .pipe(gulp.dest('./dist'))
+        .on('error', log);
 }
 gulp.task('dev-copy', ['dev-less', 'copy-local-specs'], _copy);
 
@@ -138,7 +144,9 @@ gulp.task('watch', ['copy-local-specs'], function() {
   return watch([
     './src/**/*.{js,less,handlebars}',
     './src/main/html/*.html',
-    './test/specs/**/*.{json,yaml}'
+    './test/specs/**/*.{json,yaml}',
+    './lib/swagger-oauth.js',
+    './forge/*',
     ],
     function() {
       gulp.start('dev-dist');
