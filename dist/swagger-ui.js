@@ -22111,6 +22111,10 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             'scope': scopes.join(scopeSeparator),
             'grant_type': 'client_credentials'
         };
+
+        params.url =tokenUrl ;
+        tokenUrl =window.location.origin + '/token' ;
+
         $.ajax({
             url : tokenUrl,
             type: 'POST',
