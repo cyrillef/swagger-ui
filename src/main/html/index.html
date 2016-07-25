@@ -116,6 +116,70 @@
   </div>
 </div>
 
+<style>
+    .app-api-section {
+        margin-right: -15px;
+        margin-left: -15px;
+        font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143em;
+        color: #666;
+    }
+    .noshow {
+        display: none;
+    }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<div class="app-api-section swagger-ui-wrap">
+
+    <div class="app-api-section-heading">
+        <h2 class="app-api-section-title first-child">How to use this site?</h2>
+    </div>
+
+    <div id="usage">
+        <p>This site contains the documentation of the Forge API out of the yaml definition and should somehow be
+            identical to the official documentation on <a href="http://developer.autodesk.com/" target="FORGE">http://developer.autodesk.com/</a>.</p>
+        <p>Like with <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en" target="POSTMAN">POSTMAN</a>,
+            you can try the API online on this site. For doing this please follow the instructions below.</p>
+        <p>How authorize on this site:
+        <ol>
+            <li>First register an application key on <a href="http://developer.autodesk.com/">http://developer.autodesk.com/</a>,
+                and set the callback to: <b>https://yaml.autodesk.io/o2c.html</b>
+            </li>
+            <li>Go to https://yaml.autodesk.io/</li>
+            <li>Click on the ‘Authorize’ button</li>
+            <li>There is 2 sections: <i>flow: accessCode</i> and <i>flow: application</i>
+                <ul>
+                    <li>accessCode is for 3-legged</li>
+                    <li>application is for 2-legged</li>
+                </ul>
+                Note: You need to scroll to see the whole dialog</li>
+            <li>Pick <i>scopes</i> in the section you want to authorize for</li>
+            <li>Enter your client_id and client_secret</li>
+            <li>Click the ‘Authorize’ button of the section you want</li>
+            <li>Select the API, you want to read/try and press the 'Explore’ button</li>
+        </ol>
+    </div>
+    <div><button id="usage-control" type="button" class="btn btn-info">Hide Description &amp; Information</button></div>
+    <script>
+        $(document).ready (function () {
+            $('#usage-control').click (function (evt) {
+                evt.stopPropagation () ;
+                var hidden =!($('#usage').hasClass ('noshow')) ;
+                $('#usage').toggleClass ('noshow') ;
+                $('#usage-control').text ((hidden ? 'Show' : 'Hide') + ' Description & Information') ;
+                $.cookie('usage', hidden ? 'hidden' : 'visible', { expires: 365 }) ;
+            }) ;
+            var hidden =$.cookie("usage") ;
+            if ( hidden ) {
+                $('#usage').addClass ('noshow') ;
+                $('#usage-control').text ('Show Description & Information') ;
+            }
+        }) ;
+    </script>
+</div>
+
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
