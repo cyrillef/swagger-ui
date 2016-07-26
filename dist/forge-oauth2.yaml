@@ -13,9 +13,10 @@ info:
     Step-by-step tutorials that walk you through a few common workflows
     Documentation on each of the OAuth REST endpoints
   contact:
-    name: "API Support"
-    url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
-    email: "forge-help@autodesk.com"
+    name: "Forge API Team"
+    #url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
+    url: "http://stackoverflow.com/questions/tagged/autodesk-forge+oauth"
+    email: "forge.help@autodesk.com"
   termsOfService: "http://www.autodesk.com/company/legal-notices-trademarks/terms-of-service-autodesk360-web-services/autodesk-web-services-api-beta-terms-of-service"
   #license:
   #  name:

@@ -138,27 +138,34 @@
     </div>
 
     <div id="usage">
-        <p>This site contains the documentation of the Forge API out of the yaml definition and should somehow be
-            identical to the official documentation on <a href="http://developer.autodesk.com/" target="FORGE">http://developer.autodesk.com/</a>.</p>
-        <p>Like with <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en" target="POSTMAN">POSTMAN</a>,
-            you can try the API online on this site. For doing this please follow the instructions below.</p>
-        <p>How authorize on this site:
-        <ol>
-            <li>First register an application key on <a href="http://developer.autodesk.com/">http://developer.autodesk.com/</a>,
-                and set the callback to: <b>https://yaml.autodesk.io/o2c.html</b>
+        <p>This site contains the documentation of the Forge API generated from its yaml definitions and should
+            be identical to the official documentation on
+            <a href="http://developer.autodesk.com/" target="FORGE">http://developer.autodesk.com/</a>.</p>
+        <p>As with <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en" target="POSTMAN">POSTMAN</a>,
+            you can test the API online on this site. In order to do this, you first need to authorize this site by following these instructions.</p>
+        <p>
+        <ol style="list-style-type: upper-roman;">
+            <li>Register an application key on <a href="http://developer.autodesk.com/">http://developer.autodesk.com/</a>,
+                and set the callback URL to:
+                <span style="font-weight: bold; color: red">https://yaml.autodesk.io/o2c.html</span>
             </li>
             <li>Go to https://yaml.autodesk.io/</li>
             <li>Click on the ‘Authorize’ button</li>
             <li>There is 2 sections: <i>flow: accessCode</i> and <i>flow: application</i>
+                <blockquote style="margin-left: 15px;">
                 <ul>
                     <li>accessCode is for 3-legged</li>
                     <li>application is for 2-legged</li>
                 </ul>
-                Note: You need to scroll to see the whole dialog</li>
-            <li>Pick <i>scopes</i> in the section you want to authorize for</li>
+                <span style="color: red">Note: You need to scroll to see the whole dialog</span></li>
+                </blockquote>
+            <li>Select the <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/scopes/" target="SCOPES">scopes</a>
+                in the authorization section (‘accessCode’ or ‘application’) you want to authorize.</li>
             <li>Enter your client_id and client_secret</li>
             <li>Click the ‘Authorize’ button of the section you want</li>
-            <li>Select the API, you want to read/try and press the 'Explore’ button</li>
+            <li>Select the API you want to read/try in the combobox at the top of the page and press the 'Explore’ button.</li>
+            <li>Expand the API endpoint you’re interested in by clicking on it,
+                enter the required parameters, and click the ‘Try it!’ button.</li>
         </ol>
     </div>
     <div><button id="usage-control" type="button" class="btn btn-info">Hide Description &amp; Information</button></div>
