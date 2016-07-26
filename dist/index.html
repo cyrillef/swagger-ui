@@ -174,7 +174,7 @@
     <script>
         $(document).ready (function () {
             $('#usage-control').click (function (evt) {
-                evt.stopPropagation () ;
+                //evt.stopPropagation () ;
                 var hidden =!($('#usage').hasClass ('noshow')) ;
                 $('#usage').toggleClass ('noshow') ;
                 $('#usage-control').text ((hidden ? 'Show' : 'Hide') + ' Description & Information') ;

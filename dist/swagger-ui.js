@@ -22263,7 +22263,11 @@ SwaggerUi.Views.HeaderView = Backbone.View.extend({
       trigger = false;
     }
 
-    $('#input_baseUrl').val(url);
+      var tagName =$('#input_baseUrl').prop('tagName') ;
+      if ( tagName && tagName !== 'SELECT' ) {
+          $('#input_baseUrl').val(url);
+      }
+
 
     if (trigger) {
       this.trigger('update-swagger-ui', {url:url});
