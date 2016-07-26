@@ -1,10 +1,40 @@
 <div>
-    <h3 class="auth__title">Select OAuth2.0 Scopes</h3>
+    <!-- h3 class="auth__title">Select OAuth2.0 Scopes</h3>
     <p>{{description}}</p>
     <p>Scopes are used to grant an application different levels of access to data on behalf of the end user. Each API may declare one or more scopes.
         <a href="#">Learn how to use</a>
     </p>
-    <p><strong> {{appName}} </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p>
+    <p><strong> {{appName}} </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p -->
+
+
+    {{#ifCond flow "==" "application" }}
+        <h3 class="auth__title">Application Context OAuth2 (2 legged)</h3>
+        <p>This is often considered the default type of authentication, and it is the simplest.
+            When your app needs to call the API without having to access resources that require an end user’s
+            permission (for example, translating a design file from one format to another), the communication is
+            directly between your app and the Forge Platform. The end user, if there is one, does not need to be
+            aware of the authentication or provide authorization for the app to access any resources.</p>
+        <p>This kind of flow is called “two-legged” because your app and the Forge Platform are the two “legs”.</p>
+        <p>Scopes here are used to grant an application different levels of access to data without having to access
+            resources that require an end user’s permission.
+            Each API may declare one or more scopes.
+            <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/scopes/" target="SCOPES">Learn how to use</a>
+            Select the scopes you want to authorize.</p>
+    {{else}}
+        <h3 class="auth__title">User Context OAuth2 (3 legged)</h3>
+        <p>When an app needs to access resources belonging to an end user, that user must explicitly provide authorization.
+            The typical mechanism, in the case of a web app, is for the app to redirect the user to an Autodesk login page
+            with information about which of the user’s resources it wishes to access. The user then provides explicit consent,
+            letting the Forge Platform know that the referring app is to be granted the requested access. The user is then
+            redirected back to the app, which can then access the required resources.</p>
+        <p>This kind of flow is called “three-legged” because your app, the Forge Platform, and the end user make up
+            the three “legs” of the flow.</p>
+        <p>Scopes are used to grant an application different levels of access to data on behalf of the end user.
+            Each API may declare one or more scopes.
+            <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/scopes/" target="SCOPES">Learn how to use</a>
+            Select the scopes you want to authorize.</p>
+    {{/ifCond}}
+
     {{#if authorizationUrl}}
     <p>Authorization URL: {{authorizationUrl}}</p>
     {{/if}}

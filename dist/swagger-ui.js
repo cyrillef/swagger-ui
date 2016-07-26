@@ -2553,16 +2553,20 @@ this["Handlebars"]["templates"]["main"] = Handlebars.template({"1":function(dept
   return buffer + "    </h4>\n    </div>\n</div>\n";
 },"useData":true});
 this["Handlebars"]["templates"]["oauth2"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  return "        <h3 class=\"auth__title\">Application Context OAuth2 (2 legged)</h3>\n        <p>This is often considered the default type of authentication, and it is the simplest.\n            When your app needs to call the API without having to access resources that require an end user’s\n            permission (for example, translating a design file from one format to another), the communication is\n            directly between your app and the Forge Platform. The end user, if there is one, does not need to be\n            aware of the authentication or provide authorization for the app to access any resources.</p>\n        <p>This kind of flow is called “two-legged” because your app and the Forge Platform are the two “legs”.</p>\n        <p>Scopes here are used to grant an application different levels of access to data without having to access\n            resources that require an end user’s permission.\n            Each API may declare one or more scopes.\n            <a href=\"https://developer.autodesk.com/en/docs/oauth/v2/overview/scopes/\" target=\"SCOPES\">Learn how to use</a>\n            Select the scopes you want to authorize.</p>\n";
+  },"3":function(depth0,helpers,partials,data) {
+  return "        <h3 class=\"auth__title\">User Context OAuth2 (3 legged)</h3>\n        <p>When an app needs to access resources belonging to an end user, that user must explicitly provide authorization.\n            The typical mechanism, in the case of a web app, is for the app to redirect the user to an Autodesk login page\n            with information about which of the user’s resources it wishes to access. The user then provides explicit consent,\n            letting the Forge Platform know that the referring app is to be granted the requested access. The user is then\n            redirected back to the app, which can then access the required resources.</p>\n        <p>This kind of flow is called “three-legged” because your app, the Forge Platform, and the end user make up\n            the three “legs” of the flow.</p>\n        <p>Scopes are used to grant an application different levels of access to data on behalf of the end user.\n            Each API may declare one or more scopes.\n            <a href=\"https://developer.autodesk.com/en/docs/oauth/v2/overview/scopes/\" target=\"SCOPES\">Learn how to use</a>\n            Select the scopes you want to authorize.</p>\n";
+  },"5":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "    <p>Authorization URL: "
     + escapeExpression(((helper = (helper = helpers.authorizationUrl || (depth0 != null ? depth0.authorizationUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"authorizationUrl","hash":{},"data":data}) : helper)))
     + "</p>\n";
-},"3":function(depth0,helpers,partials,data) {
+},"7":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "        <p>Token URL: "
     + escapeExpression(((helper = (helper = helpers.tokenUrl || (depth0 != null ? depth0.tokenUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"tokenUrl","hash":{},"data":data}) : helper)))
     + "</p>\n";
-},"5":function(depth0,helpers,partials,data) {
+},"9":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "            <li>\n                <input class=\"oauth-scope\" type=\"checkbox\" data-scope=\""
     + escapeExpression(((helper = (helper = helpers.scope || (depth0 != null ? depth0.scope : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"scope","hash":{},"data":data}) : helper)))
     + "\" oauthtype=\""
@@ -2572,35 +2576,38 @@ this["Handlebars"]["templates"]["oauth2"] = Handlebars.template({"1":function(de
     + "</label><br/>\n                <span class=\"api-scope-desc\">"
     + escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"description","hash":{},"data":data}) : helper)))
     + "\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.OAuthSchemeKey : depth0), {"name":"if","hash":{},"fn":this.program(6, data),"inverse":this.noop,"data":data});
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.OAuthSchemeKey : depth0), {"name":"if","hash":{},"fn":this.program(10, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer + "                </span>\n            </li>\n";
-},"6":function(depth0,helpers,partials,data) {
+},"10":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "                        ("
     + escapeExpression(((helper = (helper = helpers.OAuthSchemeKey || (depth0 != null ? depth0.OAuthSchemeKey : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"OAuthSchemeKey","hash":{},"data":data}) : helper)))
     + ")\n";
-},"8":function(depth0,helpers,partials,data) {
+},"12":function(depth0,helpers,partials,data) {
   return "";
-},"10":function(depth0,helpers,partials,data) {
+},"14":function(depth0,helpers,partials,data) {
   return "    <div class=\"auth_label\">\n        <span class=\"oauth2_auth__label\" data-sw-translate>Client ID:</span>\n        <input required placeholder=\"Your Client ID\" class=\"oauth2_auth__client_id auth_input oauth2_auth__field\"\n               name=\"client_id\" type=\"text\" />\n    </div>\n    <div class=\"auth_label\">\n        <span class=\"oauth2_auth__label\" data-sw-translate>Client Secret:</span>\n        <input required placeholder=\"Your Client Secret\" class=\"oauth2_auth__client_secret auth_input oauth2_auth__field\"\n               name=\"client_secret\" type=\"password\" /></label>\n    </div>\n";
   },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div>\n    <h3 class=\"auth__title\">Select OAuth2.0 Scopes</h3>\n    <p>"
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div>\n    <!-- h3 class=\"auth__title\">Select OAuth2.0 Scopes</h3>\n    <p>"
     + escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"description","hash":{},"data":data}) : helper)))
     + "</p>\n    <p>Scopes are used to grant an application different levels of access to data on behalf of the end user. Each API may declare one or more scopes.\n        <a href=\"#\">Learn how to use</a>\n    </p>\n    <p><strong> "
     + escapeExpression(((helper = (helper = helpers.appName || (depth0 != null ? depth0.appName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"appName","hash":{},"data":data}) : helper)))
-    + " </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p>\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.authorizationUrl : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+    + " </strong> API requires the following scopes. Select which ones you want to grant to Swagger UI.</p -->\n\n\n";
+  stack1 = ((helpers.ifCond || (depth0 && depth0.ifCond) || helperMissing).call(depth0, (depth0 != null ? depth0.flow : depth0), "==", "application", {"name":"ifCond","hash":{},"fn":this.program(1, data),"inverse":this.program(3, data),"data":data}));
   if (stack1 != null) { buffer += stack1; }
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.tokenUrl : depth0), {"name":"if","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
+  buffer += "\n";
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.authorizationUrl : depth0), {"name":"if","hash":{},"fn":this.program(5, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.tokenUrl : depth0), {"name":"if","hash":{},"fn":this.program(7, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "    <p>flow: "
     + escapeExpression(((helper = (helper = helpers.flow || (depth0 != null ? depth0.flow : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"flow","hash":{},"data":data}) : helper)))
     + "</p>\n    <ul class=\"api-popup-scopes\">\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.scopes : depth0), {"name":"each","hash":{},"fn":this.program(5, data),"inverse":this.noop,"data":data});
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.scopes : depth0), {"name":"each","hash":{},"fn":this.program(9, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "    </ul>\n\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.isLogout : depth0), {"name":"if","hash":{},"fn":this.program(8, data),"inverse":this.program(10, data),"data":data});
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.isLogout : depth0), {"name":"if","hash":{},"fn":this.program(12, data),"inverse":this.program(14, data),"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer + "\n</div>";
 },"useData":true});
