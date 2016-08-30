@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
   title: Forge-OSS
-  version: 2.0.0
-  x-summary: Asynchronous Javascript/Node.js library for the Autodesk Forge OSS API
+  version: 2.0.3
+  x-summary: Asynchronous Javascript/Node.js library for the Autodesk Forge OSS API.
   description: 'The Data Management API provides a unified and consistent way to access
     data across A360, Fusion 360, and the Object Storage Service.
 
@@ -159,8 +159,6 @@ paths:
   /oss/v2/buckets/{bucketKey}:
     x-summary: Buckets
     x-description: Buckets related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
     delete:
       operationId: delete_bucket
       description: 'This endpoint will delete a bucket.
@@ -178,11 +176,11 @@ paths:
       x-ads_command_line_example: 'curl -v "https://developer.api.autodesk.com/oss/v2/buckets/"
         -X DELETE -H "Authorization: Bearer RhS6iEVMnEfl77MBSK3l2je06UHj"'
       tags: [Buckets]
+      parameters:
+      - {$ref: '#/parameters/bucketKey'}
   /oss/v2/buckets/{bucketKey}/details:
     x-summary: Buckets
     x-description: Buckets related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
     get:
       operationId: get_bucket_details
       description: This endpoint will return the buckets owned by the application.
@@ -199,12 +197,11 @@ paths:
       x-ads_command_line_example: 'curl -v "https://developer.api.autodesk.com/oss/v2/buckets"
         -X GET -H "Authorization: Bearer RhS6iEVMnEfl77MBSK3l2je06UHj"'
       tags: [Buckets]
+      parameters:
+      - {$ref: '#/parameters/bucketKey'}
   /oss/v2/buckets/{bucketKey}/objects/{objectName}:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
     put:
       operationId: upload_object
       description: 'Upload an object. If the specified object name already exists
@@ -213,6 +210,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
       - {$ref: '#/parameters/Content-Length'}
       - {$ref: '#/parameters/Content-Disposition'}
       - {$ref: '#/parameters/If-Match'}
@@ -236,6 +235,8 @@ paths:
       operationId: get_object
       description: Download an object.
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
       - {$ref: '#/parameters/Range'}
       - {$ref: '#/parameters/If-None-Match'}
       - {$ref: '#/parameters/If-Modified-Since'}
@@ -272,16 +273,18 @@ paths:
         -X DELETE -H ''Authorization: Bearer kuhodzPEHSCrWH3Pm1WuBMBnxw39'' -H ''Content-Type:
         application/json;charset=UTF-8'''
       tags: [Objects]
+      parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
   /oss/v2/buckets/{bucketKey}/objects/{objectName}/resumable:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
     put:
       operationId: upload_chunk
       description: This endpoint allows resumable uploads for large files in chunks.
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
       - {$ref: '#/parameters/Content-Length'}
       - {$ref: '#/parameters/Content-Range'}
       - {$ref: '#/parameters/Content-Disposition'}
@@ -309,10 +312,6 @@ paths:
   /oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId}:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
-    - {$ref: '#/parameters/sessionId'}
     get:
       operationId: get_sessionid
       description: This endpoint returns status information about a resumable upload.
@@ -330,15 +329,18 @@ paths:
       x-ads_command_line_example: 'curl -v ''https://developer.api.autodesk.com/oss/v2/buckets/apptestbucket/objects/resumabletest.txt/status/679a7ef0-7b26-4a36-a4d8-968e518a864d''
         -X GET -H ''Authorization: Bearer ShiAeQ67rdNSfmyEmtGW8Lnrcqto'''
       tags: [Objects]
+      parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
+      - {$ref: '#/parameters/sessionId'}
   /oss/v2/buckets/{bucketKey}/objects:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
     get:
       operationId: get_objects
       description: List objects in a bucket. It is only available to the bucket creator.
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
       - {$ref: '#/parameters/limit'}
       - {$ref: '#/parameters/beginsWith'}
       - {$ref: '#/parameters/startAt'}
@@ -358,13 +360,12 @@ paths:
   /oss/v2/buckets/{bucketKey}/objects/{objectName}/details:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
     get:
       operationId: get_object_details
       description: Returns object details in JSON format.
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
       - {$ref: '#/parameters/If-Modified-Since'}
       - {$ref: '#/parameters/with'}
       responses:
@@ -384,9 +385,6 @@ paths:
   /oss/v2/buckets/{bucketKey}/objects/{objectName}/signed:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
     post:
       operationId: create_signed_resource
       description: This endpoint creates a signed URL that can be used to download
@@ -395,6 +393,8 @@ paths:
         then the signed URL will no longer be valid. A successful call to this endpoint
         requires bucket owner access.
       parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
       - {$ref: '#/parameters/access'}
       - {$ref: '#/parameters/post_buckets_signed'}
       responses:
@@ -413,8 +413,6 @@ paths:
   /oss/v2/signedresources/{id}:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/id'}
     put:
       operationId: upload_signed_resource
       description: 'Overwrite a existing object using a signed URL.
@@ -431,6 +429,7 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/id'}
       - {$ref: '#/parameters/Content-Length'}
       - {$ref: '#/parameters/Content-Disposition'}
       - {$ref: '#/parameters/x-ads-region'}
@@ -455,6 +454,7 @@ paths:
       operationId: get_signed_resource
       description: Download an object using a signed URL.
       parameters:
+      - {$ref: '#/parameters/id'}
       - {$ref: '#/parameters/Range'}
       - {$ref: '#/parameters/If-None-Match'}
       - {$ref: '#/parameters/If-Modified-Since'}
@@ -479,6 +479,7 @@ paths:
       description: Delete a signed URL. A successful call to this endpoint requires
         bucket owner access.
       parameters:
+      - {$ref: '#/parameters/id'}
       - {$ref: '#/parameters/region'}
       responses:
         '200': {$ref: '#/responses/OK-Stream'}
@@ -496,12 +497,11 @@ paths:
   /oss/v2/signedresources/{id}/resumable:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/id'}
     put:
       operationId: upload_signed_resources_chunk
       description: Resumable upload for signed URLs.
       parameters:
+      - {$ref: '#/parameters/id'}
       - {$ref: '#/parameters/Content-Range'}
       - {$ref: '#/parameters/Content-Disposition'}
       - {$ref: '#/parameters/x-ads-region'}
@@ -527,10 +527,6 @@ paths:
   /oss/v2/buckets/{bucketKey}/objects/{objectName}/copyTo/{newObjName}:
     x-summary: Objects
     x-description: Objects related operations
-    parameters:
-    - {$ref: '#/parameters/bucketKey'}
-    - {$ref: '#/parameters/objectName'}
-    - {$ref: '#/parameters/newObjName'}
     put:
       operationId: copyTo
       description: Copies an object to another object name in the same bucket.
@@ -546,6 +542,10 @@ paths:
       x-ads_command_line_example: curl -v 'https://developer.api.autodesk.com/oss/v2/buckets/bucketexamplekey/objects/testobject/copyto/copyoftestobject'
         -X PUT -H 'Authorization=Bearer 1B6FU8z9S2x1PrjADDfPCzSGrXmI'
       tags: [Objects]
+      parameters:
+      - {$ref: '#/parameters/bucketKey'}
+      - {$ref: '#/parameters/objectName'}
+      - {$ref: '#/parameters/newObjName'}
 parameters:
   bodyStream:
     name: body
@@ -718,7 +718,7 @@ definitions:
           '
         type: string
         enum: [transient, temporary, persistent]
-  buckets:
+  bucket:
     description: Bucket json response
     type: object
     required: [bucketKey, bucketOwner, createdDate, permissions, policyKey]
@@ -795,7 +795,7 @@ definitions:
 responses:
   post_buckets_OK:
     description: OK, Bucket successfully created.
-    schema: {$ref: '#/definitions/buckets'}
+    schema: {$ref: '#/definitions/bucket'}
   get_buckets_OK:
     description: OK, Success.
     schema:
@@ -820,7 +820,7 @@ responses:
         next: {description: Next possible request, type: string}
   get_buckets_details_OK:
     description: OK, Get bucket details was successful.
-    schema: {$ref: '#/definitions/buckets'}
+    schema: {$ref: '#/definitions/bucket'}
   put_object_OK:
     description: OK, Get bucket details was successful.
     schema: {$ref: '#/definitions/objectDetails'}

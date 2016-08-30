@@ -1,9 +1,9 @@
 swagger: '2.0'
 info:
   title: Forge-Data-Management
-  version: 2.0.0
+  version: 2.0.3
   x-summary: Asynchronous Javascript/Node.js library for the Autodesk Forge Data Management
-    API
+    API.
   description: 'The Data Management API provides a unified and consistent way to access
     data across A360, Fusion 360, and the Object Storage Service.
 
@@ -156,8 +156,6 @@ paths:
   /project/v1/hubs/{hub_id}:
     x-summary: Hubs by ID
     x-description: Hub related operations
-    parameters:
-    - {$ref: '#/parameters/hub_id'}
     get:
       operationId: get_hub
       description: 'Returns data on a specific `hub_id`.
@@ -173,11 +171,11 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/project/v1/hubs/a.1256"'
       tags: [Hubs]
+      parameters:
+      - {$ref: '#/parameters/hub_id'}
   /project/v1/hubs/{hub_id}/projects:
     x-summary: Projects
     x-description: Project related operations
-    parameters:
-    - {$ref: '#/parameters/hub_id'}
     get:
       operationId: get_hub_projects
       description: 'Returns a collection of projects for a given `hub_id`.
@@ -189,6 +187,7 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/hub_id'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
       responses:
@@ -204,9 +203,6 @@ paths:
   /project/v1/hubs/{hub_id}/projects/{project_id}:
     x-summary: Projects by ID
     x-description: Project related operations
-    parameters:
-    - {$ref: '#/parameters/hub_id'}
-    - {$ref: '#/parameters/project_id'}
     get:
       operationId: get_project
       description: 'Returns a project for a given `project_id`.
@@ -222,12 +218,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/project/v1/hubs/a.1256/projects/a.45637"'
       tags: [Projects]
+      parameters:
+      - {$ref: '#/parameters/hub_id'}
+      - {$ref: '#/parameters/project_id'}
   /project/v1/hubs/{hub_id}/projects/{project_id}/hub:
     x-summary: Project hub
     x-description: Project related operations
-    parameters:
-    - {$ref: '#/parameters/hub_id'}
-    - {$ref: '#/parameters/project_id'}
     get:
       operationId: get_project_hub
       description: 'Returns the hub for a given `project_id`.
@@ -243,6 +239,9 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/project/v1/hubs/a.1256/projects/a.45637/hub"'
       tags: [Projects]
+      parameters:
+      - {$ref: '#/parameters/hub_id'}
+      - {$ref: '#/parameters/project_id'}
   /data/v1/health:
     x-summary: Health for `data` domain
     x-description: Health related operations
@@ -261,9 +260,6 @@ paths:
   /data/v1/projects/{project_id}/folders/{folder_id}:
     x-summary: Folders by ID
     x-description: Folder related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/folder_id'}
     get:
       operationId: get_folder
       description: 'Returns the folder by ID for any folder within a given project.
@@ -283,12 +279,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/folders/urn%3Aadsk.wipprod%3Adm.folder%3AhC6k4hndRWaeIVhIjvHu8w"'
       tags: [Folders]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
   /data/v1/projects/{project_id}/folders/{folder_id}/parent:
     x-summary: Folder parent
     x-description: Folder related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/folder_id'}
     get:
       operationId: get_folder_parent
       description: 'Returns the parent folder (if it exists).
@@ -309,12 +305,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/folders/urn%3Aadsk.wipprod%3Adm.folder%3AhC6k4hndRWaeIVhIjvHu8w/parent"'
       tags: [Folders]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
   /data/v1/projects/{project_id}/folders/{folder_id}/contents:
     x-summary: Folder contents
     x-description: Folder related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/folder_id'}
     get:
       operationId: get_folder_contents
       description: 'Returns a collection of items and folders within a folder.
@@ -327,6 +323,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
@@ -346,9 +344,6 @@ paths:
   /data/v1/projects/{project_id}/folders/{folder_id}/refs:
     x-summary: Folder refs
     x-description: Folder related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/folder_id'}
     get:
       operationId: get_folder_refs
       description: 'Returns the resources (`items`, `folders`, and `versions`) which
@@ -365,6 +360,8 @@ paths:
         \ to restrict the response to the\n  custom relationship types (`filter[meta.refType]`)\
         \ they are interested in.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
@@ -382,9 +379,6 @@ paths:
   /data/v1/projects/{project_id}/folders/{folder_id}/relationships/refs:
     x-summary: Folder refs relationships
     x-description: Folder related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/folder_id'}
     get:
       operationId: get_folder_relationships_refs
       description: 'Returns the custom relationships that are associated to the given
@@ -403,6 +397,8 @@ paths:
         \ which contains the resources that are involved in the\n  relationship, which\
         \ is essentially the `GET projects/:project_id/folders/:folder_id/refs` endpoint.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_refType'}
@@ -426,6 +422,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/folder_id'}
       - {$ref: '#/parameters/body_create_ref'}
       responses:
         '204': {$ref: '#/responses/ref_created'}
@@ -441,9 +439,6 @@ paths:
   /data/v1/projects/{project_id}/items/{item_id}:
     x-summary: Items by ID
     x-description: Item related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item
       description: 'Returns a resource item by ID for any item within a given project.
@@ -466,12 +461,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/items/urn%3Aadsk.wipprod%3Adm.lineage%3AhC6k4hndRWaeIVhIjvHu8w"'
       tags: [Items]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
   /data/v1/projects/{project_id}/items/{item_id}/parent:
     x-summary: Item parent folder
     x-description: Item related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item_parent_folder
       description: 'Returns the "parent" folder for the given item.
@@ -488,12 +483,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/items/urn%3Aadsk.wipprod%3Adm.lineage%3AhC6k4hndRWaeIVhIjvHu8w/parent"'
       tags: [Items]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
   /data/v1/projects/{project_id}/items/{item_id}/refs:
     x-summary: Item refs
     x-description: Item related operations|
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item_refs
       description: 'Returns the resources (`items`, `folders`, and `versions`) which
@@ -510,6 +505,8 @@ paths:
         \ to restrict the response to the\n  custom relationship types (`filter[meta.refType]`)\
         \ they are interested in.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
@@ -527,9 +524,6 @@ paths:
   /data/v1/projects/{project_id}/items/{item_id}/relationships/refs:
     x-summary: Item refs relationships
     x-description: Item related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item_relationships_refs
       description: 'Returns the custom relationships that are associated to the given
@@ -548,6 +542,8 @@ paths:
         \ which contains the resources that are involved in the\n  relationship, which\
         \ is essentially the `GET projects/:project_id/items/:item_id/refs` endpoint.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_refType'}
@@ -571,6 +567,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
       - {$ref: '#/parameters/body_create_ref'}
       responses:
         '204': {$ref: '#/responses/ref_created'}
@@ -586,9 +584,6 @@ paths:
   /data/v1/projects/{project_id}/items/{item_id}/tip:
     x-summary: Item tip version
     x-description: Item related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item_tip
       description: 'Returns the "tip" version for the given item.
@@ -609,12 +604,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/items/urn%3Aadsk.wipprod%3Adm.lineage%3AhC6k4hndRWaeIVhIjvHu8w/tip"'
       tags: [Items]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
   /data/v1/projects/{project_id}/items/{item_id}/versions:
     x-summary: Item versions
     x-description: Item related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/item_id'}
     get:
       operationId: get_item_versions
       description: 'Returns versions for the given item.
@@ -623,6 +618,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/item_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
@@ -643,9 +640,6 @@ paths:
   /data/v1/projects/{project_id}/versions/{version_id}:
     x-summary: Versions by ID
     x-description: Version related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/version_id'}
     get:
       operationId: get_version
       description: 'Returns the version with the given `version_id`.
@@ -662,12 +656,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/items/urn%3Aadsk.wipprod%3Adm.lineage%3AhC6k4hndRWaeIVhIjvHu8w/tip"'
       tags: [Versions]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/version_id'}
   /data/v1/projects/{project_id}/versions/{version_id}/item:
     x-summary: Version item
     x-description: Version related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/version_id'}
     get:
       operationId: get_version_item
       description: 'Returns the item the given version is associated with.
@@ -684,12 +678,12 @@ paths:
       x-ads_command_line_example: 'curl -X GET -H "Authorization: Bearer kEnG562yz5bhE9igXf2YTcZ2bu0z"
         "https://developer.api.autodesk.com/data/v1/projects/a.45637/versions/urn%3Aadsk.wipprod%3Afs.file%3Avf.b909RzMKR4mhc3O7UBY_8g%3Fversions%3D2/item"'
       tags: [Versions]
+      parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/version_id'}
   /data/v1/projects/{project_id}/versions/{version_id}/refs:
     x-summary: Version refs
     x-description: Version related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/version_id'}
     get:
       operationId: get_version_refs
       description: 'Returns the resources (`items`, `folders`, and `versions`) which
@@ -706,6 +700,8 @@ paths:
         \ to restrict the response to the\n  custom relationship types (`filter[meta.refType]`)\
         \ they are interested in.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/version_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_extensionType'}
@@ -723,9 +719,6 @@ paths:
   /data/v1/projects/{project_id}/versions/{version_id}/relationships/refs:
     x-summary: Version refs relationships
     x-description: Version related operations
-    parameters:
-    - {$ref: '#/parameters/project_id'}
-    - {$ref: '#/parameters/version_id'}
     get:
       operationId: get_version_relationships_refs
       description: 'Returns the custom relationships that are associated to the given
@@ -745,6 +738,8 @@ paths:
         \ is essentially the `GET projects/:project_id/versions/:version_id/refs`\
         \ endpoint.\n"
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/version_id'}
       - {$ref: '#/parameters/query_filter_type'}
       - {$ref: '#/parameters/query_filter_id'}
       - {$ref: '#/parameters/query_filter_refType'}
@@ -768,6 +763,8 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
+      - {$ref: '#/parameters/version_id'}
       - {$ref: '#/parameters/body_create_ref'}
       responses:
         '204': {$ref: '#/responses/ref_created'}
@@ -783,8 +780,6 @@ paths:
   /data/v1/projects/{project_id}/storage:
     x-summary: Storage
     x-description: Create storage
-    parameters:
-    - {$ref: '#/parameters/project_id'}
     post:
       operationId: post_storage
       description: 'Creates a storage location in the OSS where data can be uploaded
@@ -792,6 +787,7 @@ paths:
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
       - {$ref: '#/parameters/body_create_storage'}
       responses:
         '201': {$ref: '#/responses/storage_created'}
@@ -807,14 +803,13 @@ paths:
   /data/v1/projects/{project_id}/items:
     x-summary: Storage
     x-description: Create item
-    parameters:
-    - {$ref: '#/parameters/project_id'}
     post:
       operationId: post_item
       description: 'Creates a new item in the ''data'' domain service.
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
       - {$ref: '#/parameters/body_create_item'}
       responses:
         '201': {$ref: '#/responses/item_created'}
@@ -834,14 +829,13 @@ paths:
   /data/v1/projects/{project_id}/versions:
     x-summary: Storage
     x-description: Create version
-    parameters:
-    - {$ref: '#/parameters/project_id'}
     post:
       operationId: post_version
       description: 'Creates a new version of an item in the ''data'' domain service.
 
         '
       parameters:
+      - {$ref: '#/parameters/project_id'}
       - {$ref: '#/parameters/body_create_version'}
       responses:
         '201': {$ref: '#/responses/version_created'}
