@@ -56,7 +56,7 @@ To build swagger-ui using a docker container:
 
 ```
 docker build -t swagger-ui-builder .
-docker run -p 80:8080 swagger-ui-builder
+docker run -d -p 80:8080 swagger-ui-builder
 ```
 
 This will start Swagger UI at `http://localhost`.
